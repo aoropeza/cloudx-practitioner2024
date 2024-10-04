@@ -11,7 +11,7 @@
     "cdk": "cdk",
     "synth": "cdk synth",
     "synth:local": "cdk synth --profile omdc",
-    "deploy": "cdk deploy"
+    "deploy": "cdk deploy --require-approval never"
   },
   "devDependencies": {
     "@types/jest": "^29.5.12",
