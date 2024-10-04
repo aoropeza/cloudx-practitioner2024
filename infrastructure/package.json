@@ -9,6 +9,7 @@
     "watch": "tsc -w",
     "test": "jest",
     "cdk": "cdk",
+    "synth": "cdk synth",
     "synth:local": "cdk synth --profile omdc",
     "deploy": "cdk deploy"
   },
