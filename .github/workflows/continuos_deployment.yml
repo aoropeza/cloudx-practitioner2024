@@ -1,0 +1,59 @@
+name: CI/CD App
+
+# Controls when the action will run.
+on:
+  push:
+    branches: [develop, main]
+  #pull_request:
+  #branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  continuos_deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node JS
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Set env variables
+        run: |
+          echo "NEXT_PUBLIC_API_URL=https://www.api.com/v1" >> $GITHUB_ENV
+          echo "NEXT_PUBLIC_API_APIKEY=api-key_1234567890" >> $GITHUB_ENV
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Install Workspaces Dependencies
+        run: "npm install"
+        working-directory: app
+
+      - name: Lint All Apps
+        run: "npm run lint"
+        working-directory: app
+
+      - name: Building Web App and packages
+        run: "npm run build"
+        working-directory: app
+
+      - name: Install Infrastructure Dependencies
+        run: "npm install"
+        working-directory: infrastructure
+
+      - name: CDK Synth
+        run: npm run synth
+        working-directory: infrastructure
+
+      - name: CDK Deploy 
+        working-directory: infrastructure
+        run: npm run deploy --require-approval never

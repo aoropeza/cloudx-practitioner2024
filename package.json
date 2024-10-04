@@ -1,0 +1,14 @@
+{
+  "name": "cloudx-practitioner",
+  "version": "1.0.0",
+  "description": "1.- Create cdk project `cdk init --language=typescript` 2.- Create app and insfrastruture folders 3.- Move cdk code into `infrastructure` folder 4.- Move to `app` folder and create new nextjs app `npx create-next-app@latest`",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm --prefix ./app/ run build",
+    "dev": "npm --prefix ./app/ run dev",
+    "synth:local": "npm --prefix ./infrastructure/ run synth:local"
+  },
+  "author": "",
+  "license": "ISC"
+}
