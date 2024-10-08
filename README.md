@@ -32,6 +32,6 @@ Github Credentials
 <br/>Testing locally.<br/>
 8.- Run you next js app.<br/>
 9.- Synt cdk code (npm run synth:local).<br/>
-10.- Then you can run cdk deploy, but let's try with github actions.<br/>
+10.- Then you can run cdk deploy, but let's try with github actions. <br/>
 <br>
 <br>
