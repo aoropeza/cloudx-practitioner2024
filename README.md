@@ -3,6 +3,9 @@
 CDK with typescript
 - https://docs.aws.amazon.com/cdk/v2/guide/work-with-cdk-typescript.html
 
+Packaging
+- https://docs.aws.amazon.com/lambda/latest/dg/typescript-package.html
+
 ### Tools 
 NPM Workspaces
 - https://docs.npmjs.com/cli/v7/using-npm/workspaces
@@ -26,7 +29,7 @@ Github Credentials
 5.- Configure next js for static site generation.<br/>
 6.- Create package json at root level for better development experience, optional you can settup husky here.<br/>
 7.- Start adding CDK code.<br/>
-Testing locally.
+<br/>Testing locally.<br/>
 8.- Run you next js app.<br/>
 9.- Synt cdk code (npm run synth:local).<br/>
 10.- Then you can run cdk deploy, but let's try with github actions.<br/>
