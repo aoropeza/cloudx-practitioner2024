@@ -28,9 +28,7 @@ export class CloudxPractitionerStack extends cdk.Stack {
       "cloudx-practitioner-distribution",
       {
         defaultBehavior: {
-          origin: new aws_cloudfront_origins.S3Origin(hostingBucket),
-          viewerProtocolPolicy:
-            aws_cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
+          origin: new aws_cloudfront_origins.S3StaticWebsiteOrigin(hostingBucket),
         },
         defaultRootObject: "index.html",
         errorResponses: [
