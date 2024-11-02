@@ -7,6 +7,8 @@ import {
   aws_s3_deployment,
 } from "aws-cdk-lib";
 import { CfnOutput } from "aws-cdk-lib";
+import * as lambda from "aws-cdk-lib/aws-lambda";
+import * as path from "path";
 
 export class CloudxPractitionerStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
@@ -52,6 +54,14 @@ export class CloudxPractitionerStack extends cdk.Stack {
       destinationBucket: hostingBucket,
       distribution,
       distributionPaths: ["/*"],
+    });
+
+    new lambda.Function(this, "lambda-function", {
+      runtime: lambda.Runtime.NODEJS_20_X,
+      memorySize: 1024,
+      timeout: cdk.Duration.seconds(5),
+      handler: "handler.main",
+      code: lambda.Code.fromAsset(path.join(__dirname, "../../api")),
     });
   }
 }
