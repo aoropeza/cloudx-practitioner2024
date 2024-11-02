@@ -61,7 +61,7 @@ export class CloudxPractitionerStack extends cdk.Stack {
       memorySize: 1024,
       timeout: cdk.Duration.seconds(5),
       handler: "handler.main",
-      code: lambda.Code.fromAsset(path.join(__dirname, "./")),
+      code: lambda.Code.fromAsset(path.join(__dirname, "../../api")),
     });
   }
 }
